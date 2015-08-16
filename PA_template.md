@@ -2,19 +2,18 @@ Reproducible Research - Peer Reviewed Project 1
 -----------------------------------------------
 
 # Synopsis
-The goal of this assignment is to create a report that answers a list of predefined questions (list below). The report needs to be contain a single R markdown document that can be processed by knitr and transformed into an HTML file. 
+The goal of this assignment is to create a report that answers a list of predefined questions (list below). The report needs to be contain a single R markdown document (this document) that can be processed by knitr and transformed into an HTML file. 
 
 # Assignment Details
 
 This assignment makes use of data from a personal activity monitoring device. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
 
-There are four main quetions to be answered in this report. 
 
 # Data
 
 Before trying to answer the questions the first step in this project is to unzip the raw data file, load the libraries and then the data. The following code assumes you have the data file activity.zip uncompressed and in the current working directory. The raw data was forked August 7th, 2015 from github and can be found in the file [activity.zip](https://github.com/sfavorite/RepData_PeerAssessment1). 
 
-The data will be unziped using the R function (OS/R version listed below).
+The data will be unziped using the R function unzip (OS/R version listed below).
 
 
 ```r
@@ -66,7 +65,7 @@ head(data)
 ```
 
 ## What is mean total number of steps taken per day?
-This question is answered ignoring any missing values marked as NA. The steps taken for question 1 are:
+This question is answered ignoring any missing values. The steps taken for question 1 are:
 
 1 Calculate the total number of steps taken per day
 
@@ -79,10 +78,12 @@ This question is answered ignoring any missing values marked as NA. The steps ta
 # Total steps taken per day 
 sum_per_day <- aggregate(steps~date, data=data, FUN=sum)
 # Histogram of the steps per day
-hist(sum_per_day$steps, breaks=20, col="red", main="Histogram of total steps", xlab="Steps", ylab="Count")
+hist(sum_per_day$steps, breaks=20, col="red", main="Histogram of total steps each day", xlab="Steps", ylab="Count")
 ```
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+
+The median and mean steps taken per day.
 
 ```r
 # Mean  & median of  the total number of steps taken
@@ -117,9 +118,9 @@ interval_total <- aggregate(steps~interval, data=data, FUN=mean)
 plot(ts(interval_total$steps), ylab="Mean number of steps", main="Interval (5 min) average")
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
-Which interval contains th emaximum number of steps?
+Which interval contains the maximum number of steps?
 
 ```r
 interval_total[which.max(interval_total$steps), ]
@@ -175,7 +176,7 @@ The histogram of the total number of steps taken each day with the new dataset (
 hist(filled_in$steps, breaks=20, col="red", main="Total steps with average/NA replacement", xlab="Total Steps")
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
 The impact of imputing the missing data using the mean/interval strategy has only a minor (1.19) increase in the reported median and no change in the reported mean. 
 
 ```r
@@ -215,7 +216,7 @@ filled_in_total <- aggregate(steps~interval + wd, data=data2, FUN=mean)
 ggplot(filled_in_total, aes(x=interval, y=steps)) + geom_line(nrow=2, ncol=0) + facet_grid(wd ~ .) + xlab("5-minute Interval") + ylab("Number of steps") + ggtitle("Time Series plot of Weekday/Weekend steps/interval")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png) 
 
 # Environment Information
 
