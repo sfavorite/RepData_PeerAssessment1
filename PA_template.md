@@ -19,6 +19,22 @@ The data will be unziped using the R function unzip (OS/R version listed below).
 ```r
 knitr::opts_chunk$set(fig.width=12, fig.height=8, echo=TRUE)
 library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 library(ggplot2)
 library(timeDate)
 unzip("activity.zip")
