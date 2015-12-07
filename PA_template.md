@@ -19,6 +19,22 @@ The data will be unziped using the R function unzip (OS/R version listed below).
 ```r
 knitr::opts_chunk$set(fig.width=12, fig.height=8, echo=TRUE)
 library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 library(ggplot2)
 library(timeDate)
 unzip("activity.zip")
@@ -217,12 +233,12 @@ version
 ## system         x86_64, linux-gnu           
 ## status                                     
 ## major          3                           
-## minor          2.0                         
+## minor          2.2                         
 ## year           2015                        
-## month          04                          
-## day            16                          
-## svn rev        68180                       
+## month          08                          
+## day            14                          
+## svn rev        69053                       
 ## language       R                           
-## version.string R version 3.2.0 (2015-04-16)
-## nickname       Full of Ingredients
+## version.string R version 3.2.2 (2015-08-14)
+## nickname       Fire Safety
 ```

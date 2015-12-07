@@ -1,4 +1,5 @@
 #Statistical prediction/modeling
+setwd("DataScience/Reproducible Research/RepData_PeerAssessment1/")
 # Load the data (Loading and preprocessing the data)
 #library(timeDate)
 library(dplyr)
@@ -36,3 +37,4 @@ data2 <- data2 %>% mutate(wd=ifelse(isWeekday(x=data2$date), "weekday", "weekend
 filled_in_total <- aggregate(steps~interval + wd, data=data2, FUN=mean)
 ggplot(filled_in_total, aes(x=interval, y=steps)) + geom_line(nrow=2, ncol=0) + facet_grid(wd ~ .) + xlab("5-minute Interval") + ylab("Number of steps") + ggtitle("Time Series plot of Weekday/Weekend steps/interval")
 version
+
